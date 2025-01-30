@@ -7,8 +7,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
-    $stmt = $pdo->prepare('INSERT INTO users (username, password) VALUES (:username, :password)');
-    $stmt->execute(['username' => $username, 'password' => $password]);
+    $stmt = $pdo->prepare('INSERT INTO users (username, password, role) VALUES (:username, :password, :role)');
+    $stmt->execute(['username' => $username, 'password' => $password, 'role' => 'worker']);
 
     $_SESSION['message'] = 'Registration successful! Please login.';
     header('Location: login.php');
@@ -17,12 +17,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
 </head>
+
 <body>
-    <h2>Register</h2>   
+    <h2>Register</h2>
     <form method="POST" action="">
         <label for="username">Username:</label>
         <input type="text" name="username" required>
@@ -34,4 +36,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </form>
     <p>Already have an account? <a href="login.php">Login here</a></p>
 </body>
+
 </html>

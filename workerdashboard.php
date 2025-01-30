@@ -12,11 +12,11 @@ if (!isset($_SESSION['user_id'])) {
 
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard</title>
+    <title>Worker Dashboard</title>
 </head>
 
 <body>
-    <h2>Welcome,</h2>
+    <h2>Welcome, worker</h2>
     <p>This is your dashboard.</p>
     <a href="logout.php">Logout</a>
 </body>
